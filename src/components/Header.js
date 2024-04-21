@@ -1,6 +1,6 @@
 import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants"
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase"
@@ -52,10 +52,11 @@ const Header = ()=> {
       dispatch(changeLanguage(e.target.value))
     }
 
+
     return (
         <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full
          flex justify-between">
-            <img src={LOGO} alt="Logo" className="w-44 "/>
+            <img src={LOGO} alt="Logo" className="w-44 cursor-pointer" onClick={handleGptSearchClick}/>
             {user && (
             <div className="flex p-2">
                 {showGptSearch && <select className="p-2 m-2 bg-red-500 text-white rounded-lg" onChange={handleLanguageChange}>
